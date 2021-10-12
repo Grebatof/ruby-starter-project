@@ -17,5 +17,7 @@ class IOManager
 
   def next_state: () -> void
 
+  def print_result: (String message) -> untyped
+
   def start: () -> void
 end
