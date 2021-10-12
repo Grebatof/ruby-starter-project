@@ -5,11 +5,11 @@ class IOManager
 
   def initialize: () -> void
 
-  def valid_scale?: (String scale) -> bool
+  def valid_scale?: (String scale) -> untyped
 
-  def input_temp_value: () -> (nil | Float)
+  def input_temp_value: () -> (nil | untyped)
 
-  def check_correctness_input_value: (Float temp_value_kelvin) -> void
+  def check_correctness_input_value: (untyped temp_value_kelvin) -> untyped
 
   def input_scale: (String message) -> untyped
 

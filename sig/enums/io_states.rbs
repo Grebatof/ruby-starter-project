@@ -7,5 +7,7 @@ module IOStates
 
   READ_FROM_TEMP_VALUE: ::Integer
 
-  CONVERT_AND_EXIT: ::Integer
+  CONVERT_TO_TEMP_SCALE: ::Integer
+
+  CONTINUE_OR_EXIT: ::Integer
 end
