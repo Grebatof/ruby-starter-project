@@ -3,8 +3,6 @@ require_relative './enums/temp_scale_names'
 class ScaleConverterToKelvin
   include TempScaleNames
 
-  @k = 273.15
-
   def convert(degree, from_scale)
     case from_scale
     when CELSIUS
@@ -23,6 +21,6 @@ class ScaleConverterToKelvin
   end
 
   def from_celsius(degree)
-    (degree + @k).round(2)
+    (degree + 273.15).round(2)
   end
 end

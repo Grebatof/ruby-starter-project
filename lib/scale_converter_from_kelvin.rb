@@ -3,26 +3,24 @@ require_relative './enums/temp_scale_names'
 class ScaleConverterFromKelvin
   include TempScaleNames
 
-  @k = 273.15
-
-  def convert(degree_kelvin, to_scale)
+  def convert(degree, to_scale)
     case to_scale
     when CELSIUS
-      to_celsius(degree_kelvin)
+      to_celsius(degree)
     when FAHRENHEIT
-      to_fahrenheit(degree_kelvin)
+      to_fahrenheit(degree)
     when KELVIN
-      degree_kelvin
+      degree
     end
   end
 
   private
 
-  def to_fahrenheit(degree_kelvin)
-    ((degree_kelvin * 9 / 5) - 459.67).round(2)
+  def to_fahrenheit(degree)
+    ((degree * 9 / 5) - 459.67).round(2)
   end
 
-  def to_celsius(degree_kelvin)
-    (degree_kelvin - @k).round(2)
+  def to_celsius(degree)
+    (degree - 273.15).round(2)
   end
 end

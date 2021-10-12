@@ -3,12 +3,12 @@ class ScaleConverterFromKelvin
 
   def initialize: () -> untyped
 
-  def convert: (untyped degree_kelvin, untyped to_scale) -> untyped
+  def convert: (untyped degree, untyped to_scale) -> untyped
 
   private
 
-  def to_fahrenheit: (untyped degree_kelvin) -> untyped
+  def to_fahrenheit: (untyped degree) -> untyped
 
-  def to_celsius: (untyped degree_kelvin) -> untyped
+  def to_celsius: (untyped degree) -> untyped
 end
 
