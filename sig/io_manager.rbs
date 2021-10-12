@@ -1,0 +1,21 @@
+class IOManager
+  include IOStates
+
+  include TempScaleNames
+
+  def initialize: () -> void
+
+  def valid_scale?: (String scale) -> bool
+
+  def input_temp_value: () -> (nil | Float)
+
+  def check_correctness_input_value: (Float temp_value_kelvin) -> void
+
+  def input_scale: (String message) -> untyped
+
+  def convert_again: () -> void
+
+  def next_state: () -> void
+
+  def start: () -> void
+end

@@ -1,0 +1,11 @@
+module IOStates
+  READ_FROM_TEMP_SCALE: ::Integer
+
+  READ_TO_TEMP_SCALE: ::Integer
+
+  CONVERT_TO_KELVIN: ::Integer
+
+  READ_FROM_TEMP_VALUE: ::Integer
+
+  CONVERT_AND_EXIT: ::Integer
+end

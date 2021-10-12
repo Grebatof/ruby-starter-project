@@ -1,0 +1,14 @@
+class ScaleConverterFromKelvin
+  include TempScaleNames
+
+  def initialize: () -> untyped
+
+  def convert: (untyped degree_kelvin, untyped to_scale) -> untyped
+
+  private
+
+  def to_fahrenheit: (untyped degree_kelvin) -> untyped
+
+  def to_celsius: (untyped degree_kelvin) -> untyped
+end
+

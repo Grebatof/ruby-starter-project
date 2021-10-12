@@ -1,0 +1,7 @@
+module TempScaleNames
+  CELSIUS: String
+
+  KELVIN: String
+
+  FAHRENHEIT: String
+end
