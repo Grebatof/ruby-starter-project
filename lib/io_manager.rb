@@ -8,9 +8,13 @@ class IOManager
   include TempScaleNames
 
   @current_state = READ_FROM_TEMP_SCALE
+  @from_scale = CELSIUS
+  @to_scale = CELSIUS
 
   def initialize
     @current_state = READ_FROM_TEMP_SCALE
+    @from_scale = CELSIUS
+    @to_scale = CELSIUS
   end
 
   def valid_scale?(scale)
@@ -63,10 +67,11 @@ class IOManager
     continue = continue.upcase
     continue.chomp!
 
-    if continue == 'Y'
+    case continue
+    when 'Y'
       next_state
       return
-    elsif continue == 'N'
+    when 'N'
       exit
     end
 
@@ -77,27 +82,29 @@ class IOManager
     @current_state = (@current_state + 1).modulo(IOStates.constants.count)
   end
 
+  def print_result(message)
+    puts message
+    next_state
+  end
+
   def start
-    from_scale = CELSIUS
-    to_scale = CELSIUS
     temp_value = 0
     temp_value_kelvin = 0
 
     loop do
       case @current_state
       when READ_FROM_TEMP_SCALE
-        from_scale = input_scale('Enter scale you want to convert from (C, K, F): ')
+        @from_scale = input_scale('Enter scale you want to convert from (C, K, F): ')
       when READ_FROM_TEMP_VALUE
         temp_value = input_temp_value
       when CONVERT_TO_KELVIN
-        temp_value_kelvin = ScaleConverterToKelvin.new.convert(temp_value, from_scale)
+        temp_value_kelvin = ScaleConverterToKelvin.new.convert(temp_value, @from_scale)
         check_correctness_input_value(temp_value_kelvin)
       when READ_TO_TEMP_SCALE
-        to_scale = input_scale('Enter result scale (C, K, F): ')
+        @to_scale = input_scale('Enter result scale (C, K, F): ')
       when CONVERT_TO_TEMP_SCALE
-        result = ScaleConverterFromKelvin.new.convert(temp_value_kelvin, to_scale)
-        puts "#{temp_value}°#{from_scale} = #{result}°#{to_scale}"
-        next_state
+        result = ScaleConverterFromKelvin.new.convert(temp_value_kelvin, @to_scale)
+        print_result("#{temp_value}°#{@from_scale} = #{result}°#{@to_scale}")
       when CONTINUE_OR_EXIT
         convert_again
       end
