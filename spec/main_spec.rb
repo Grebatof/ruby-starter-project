@@ -9,20 +9,20 @@ class Test
   RSpec.describe Main do
     describe 'Check scale' do
       context 'C (CELSIUS) is valid' do
-        subject { Main.new.valid_scale?("C") }
+        subject { Main.new.valid_scale?('C') }
         it { is_expected.to be_truthy }
       end
       context 'F (FAHRENHEIT) is valid' do
-        subject { Main.new.valid_scale?("F") }
+        subject { Main.new.valid_scale?('F') }
         it { is_expected.to be_truthy }
       end
       context 'K (KELVIN) is valid' do
-        subject { Main.new.valid_scale?("K") }
+        subject { Main.new.valid_scale?('K') }
         it { is_expected.to be_truthy }
       end
       context 'B is not valid' do
-        subject { Main.new.valid_scale?("B") }
-        it { is_expected.to be_falsy  }
+        subject { Main.new.valid_scale?('B') }
+        it { is_expected.to be_falsy }
       end
     end
 
@@ -49,14 +49,14 @@ class Test
       context 'C is correct' do
         it {
           display.stub(:gets).and_return("C\n")
-          expect(display.input_scale("")).to eq("C")
+          expect(display.input_scale('')).to eq('C')
         }
       end
       context 'B is not correct' do
         it {
           display.stub(:gets).and_return("B\n")
           expect do
-            display.input_scale("")
+            display.input_scale('')
           end.to output("\nIncorrect scale\n").to_stdout
         }
       end
@@ -66,7 +66,7 @@ class Test
       context 'Hello world!' do
         it {
           expect do
-            Main.new.print_result("Hello world!")
+            Main.new.print_result('Hello world!')
           end.to output("Hello world!\n").to_stdout
         }
       end
@@ -111,7 +111,7 @@ class Test
       context 'N - doesn\'t convert again' do
         it {
           display.stub(:gets).and_return("N\n")
-          expect(display.convert_again).to eq("exit")
+          expect(display.convert_again).to eq('exit')
         }
       end
     end
