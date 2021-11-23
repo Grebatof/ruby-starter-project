@@ -3,13 +3,9 @@ require_relative './enums/temp_scale_names'
 require_relative './scale_converter_to_kelvin'
 require_relative './scale_converter_from_kelvin'
 
-class IOManager
+class Main
   include IOStates
   include TempScaleNames
-
-  @current_state = READ_FROM_TEMP_SCALE
-  @from_scale = CELSIUS
-  @to_scale = CELSIUS
 
   def initialize
     @current_state = READ_FROM_TEMP_SCALE
@@ -111,6 +107,3 @@ class IOManager
     end
   end
 end
-
-io = IOManager.new
-io.start
