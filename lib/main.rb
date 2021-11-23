@@ -7,6 +7,10 @@ class Main
   include IOStates
   include TempScaleNames
 
+  @current_state = READ_FROM_TEMP_SCALE
+  @from_scale = CELSIUS
+  @to_scale = CELSIUS
+
   def initialize
     @current_state = READ_FROM_TEMP_SCALE
     @from_scale = CELSIUS
